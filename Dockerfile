@@ -12,7 +12,7 @@ RUN mvn package -DskipTests
 FROM openjdk:17
 
 # Copy the jar to the production image from the builder stage.
-COPY --from=builder /app/target/distributed-1.0-SNAPSHOT.jar /distributed-joins.jar
+COPY --from=builder /app/target/distributed-1.0-SNAPSHOT-jar-with-dependencies.jar /distributed-joins.jar
 
 # Run the web service on container startup.
 CMD ["java", "-jar", "/distributed-joins.jar"]
