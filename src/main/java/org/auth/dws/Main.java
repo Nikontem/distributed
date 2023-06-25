@@ -13,8 +13,6 @@ public class Main {
         // Populate the Redis instances with data'
         populateDatabase(firstRedisHandler, secondRedisHandler);
 
-//        System.out.println("First Redis data: " + firstRedisHandler.retrieve("first"));
-//        System.out.println("Second Redis data: " + secondRedisHandler.retrieve("second"));
     }
 
     private static void populateDatabase(RedisHandler firstRedisHandler, RedisHandler secondRedisHandler){
