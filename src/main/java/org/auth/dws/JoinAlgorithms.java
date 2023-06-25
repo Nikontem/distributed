@@ -75,6 +75,7 @@ public class JoinAlgorithms {
             bigKeySet = firstKeyset;
         }
 
+        //Open resource once for each RedisHandler, otherwise redis client will hang
         var firstResource = firstRedisHandler.getJedis();
         var secondResource = secondRedisHandler.getJedis();
 

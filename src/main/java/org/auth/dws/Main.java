@@ -18,6 +18,7 @@ public class Main {
     private static void populateDatabase(RedisHandler firstRedisHandler, RedisHandler secondRedisHandler){
 
         // Generate 10000 random keys and values
+        //TODO again all of this should be configurable
         Map<String, String> entries = DataUtil.generatePairs(10000, null,3);
         //Generate another 12000 random keys and values
         Map<String, String> longEntries = DataUtil.generatePairs(12000, entries,3);
