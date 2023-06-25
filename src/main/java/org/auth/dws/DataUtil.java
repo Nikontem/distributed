@@ -19,7 +19,6 @@ public class DataUtil {
      * @param desiredRange     The maximum number of days the dates can differ if a key is reused.
      * @return A map of generated key-value pairs.
      **/
-    //TODO desiredRange should be a read from a config file or from environment variables
     public static Map<String, String> generatePairs(int size, Map<String, String> generatedEntries, int desiredRange) {
         Map<String, String> entries = new HashMap<>();
 
@@ -28,6 +27,15 @@ public class DataUtil {
 
         // Define a formatter for LocalDate
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        float probability;
+
+        try{
+            probability = Float.parseFloat(System.getenv("PROBABILITY"));
+            System.out.println("Probability: from ENV " + probability);
+        } catch (NumberFormatException e) {
+            probability = 0.5f;
+        }
 
         // Generate keys and values for our database
         for (int i = 0; i < size; i++) {
@@ -79,5 +87,13 @@ public class DataUtil {
                 }
             });
         });
+    }
+
+    public static int readIntFromEnv(String envName, int defaultValue) {
+        try {
+            return Integer.parseInt(System.getenv(envName));
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
     }
 }
